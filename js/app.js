@@ -1,4 +1,5 @@
 const loadAllData = async () => {
+  handleLoader(true);
   const res = await fetch("https://openapi.programming-hero.com/api/ai/tools");
   const data = await res.json();
   console.log(data.data.tools);
@@ -48,7 +49,17 @@ const displayData = (tools) => {
 
     // append card into card container
     cardContainer.appendChild(cardDiv);
+    handleLoader(false);
   });
+};
+
+const handleLoader = (isLoading) => {
+  if (isLoading) {
+    const loader = document.getElementById("loader");
+    loader.classList.remove("hidden");
+  } else {
+    loader.classList.add("hidden");
+  }
 };
 
 loadAllData();
