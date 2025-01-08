@@ -13,8 +13,18 @@ const displayData = (tools) => {
     cardDiv.classList.add("card", "bg-base-100", "w-96", "shadow-xl");
     cardDiv.innerHTML = `
         <figure>
-            <img src="${tool.image}"
-            alt="Shoes" />
+            ${
+              tool?.name === "Jasper Chat" || tool?.name === "Replika"
+                ? `<div class="avatar placeholder">
+                    <div class="bg-neutral text-neutral-content ">
+                      <span class="text-3xl">${tool.name}</span>
+                     </div>
+                </div>`
+                : `
+                <img src="${tool.image}"
+            alt="${tool.name}" />
+            `
+            }
         </figure>
         <div class="px-5 py-2">
     <h2 class="card-title">Features</h2>
